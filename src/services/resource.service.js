@@ -1,6 +1,6 @@
 import { databaseService } from './database.service';
 
-async function getResources() {
+async function getResources(filter = null) {
     const {resources} = await databaseService.getDatabase()
     return resources;
 }

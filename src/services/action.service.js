@@ -1,11 +1,11 @@
 import { databaseService } from './database.service';
 
-async function getActions() {
+async function getActions(actionIds) {
     const { actions } = await databaseService.getDatabase()
-    return actions;
+    const res = actionIds.map(id => actions.find(action => action.id === id))
+    console.log("🚀 ~ file: action.service.js ~ line 6 ~ getActions ~ res", res)
 }
 
-
-export const resourceService = {
+export const actionService = {
     getActions
 }

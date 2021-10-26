@@ -5,7 +5,7 @@ export class ResourceList extends Component {
     render() {
         const { resources } = this.props
         return (
-            <section className="resource-list">
+            <section className="resource-list flex column">
                 {resources.length ? resources.map(resource => <ResourcePreview
                     key={resource.id}
                     resource={resource} />)

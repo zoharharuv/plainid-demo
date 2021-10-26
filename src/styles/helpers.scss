@@ -6,7 +6,7 @@
     flex-wrap: wrap;
 }
 
-.col {
+.column {
     flex-direction: column;
 }
 
@@ -38,6 +38,11 @@
 .clean {
     list-style: none;
 }
-.gap{
-    gap:10px
+
+.gap {
+    gap: 10px;
+}
+
+.padding15{
+    padding: 15px;
 }

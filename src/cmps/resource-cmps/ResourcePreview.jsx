@@ -1,18 +1,17 @@
 import { Component } from "react";
+import arrow from '../../assets/img/arrow-right.svg'
+import active from '../../assets/img/active.svg'
 
 export class ResourcePreview extends Component {
     render() {
         const { resource } = this.props
         return (
-            <section className="resource-preview">
-                <div className="resource-card flex align-center space-between">
-                    <img src={resource.imgUrl} />
-                    <div className="resource-details flex col align-center gap" >
-                        <span>{resource.title}</span>
-                        <span>{resource.description}</span>
-                        <span>Date: {resource.publishedAt.substring(0, 10)}</span>
-                    </div>
+            <section className="resource-preview flex align-center space-between">
+                <div className="resource-title align-center flex">
+                    <img src={active} alt="active" />
+                    <span>{resource.name}</span>
                 </div>
+                    <img src={arrow} alt="arrow" />
             </section>
         )
     }

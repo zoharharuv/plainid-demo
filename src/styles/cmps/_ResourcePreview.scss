@@ -1,2 +1,12 @@
-// .resource-preview {
-// }
+.resource-preview {
+    padding: 1rem;
+    border-bottom: 1px solid $clr3;
+    &.active {
+        box-shadow: 4px 0px 0 #5291eb inset;
+        background-color: #e6e6e6;
+        font-family: roboto-bold;
+    }
+    .resource-title {
+        gap: 5px;
+    }
+}

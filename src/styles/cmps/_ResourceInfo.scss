@@ -1,2 +1,43 @@
-// .resource-info{
-// }
+.resource-info {
+    background-color: $clr3;
+    flex: 1;
+    padding: 120px;
+    .resource-container {
+        background-color: $white;
+        height: 100%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        .resource-inner-container {
+            flex: 1;
+            padding-top: 15px;
+        }
+    }
+}
+
+.card{
+    padding: 15px;
+    gap: 20px;
+    .card-title{
+        gap: 5px;
+        span{
+            font-size: 0.8rem;
+            font-family: roboto-medium;
+            color: $blue;
+            text-transform: uppercase;
+        }
+    }
+    .card-info{
+        .details-info-label{
+            font-family: roboto-medium;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: darken($clr3, 25);
+        }
+        .card-row{
+            margin: 0 0 10px 0;
+            padding: 0.4rem 0.7rem;
+            background-color: $grey;
+            color: lighten($clr1, 15);
+            font-size: 0.8rem;
+        }
+    }
+}
