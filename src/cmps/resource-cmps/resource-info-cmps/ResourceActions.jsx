@@ -3,10 +3,28 @@ import help from '../../../assets/img/help-12.svg'
 import { actionService } from '../../../services/action.service';
 
 export class ResourceActions extends Component {
-    componentDidMount(){
-        actionService.getActions(["1", "2", "3", "4", "5"])
+    state = {
+        actions: []
     }
+
+    async componentDidMount() {
+        await this.getActions()
+    }
+
+    componentDidUpdate(prevProps) {
+        // JSON.strigify prevents rendering an array with the same values but different pointers
+        if (JSON.stringify(prevProps.actionIds) !== JSON.stringify(this.props.actionIds)){
+            this.getActions()
+        }
+    }
+
+    getActions = async () => {
+        const actions = await actionService.getActions(this.props.actionIds)
+        this.setState({ actions })
+    }
+
     render() {
+        const { actions } = this.state
         return (
             <section className="resource-actions flex column card" >
                 <div className="card-title flex align-center">
@@ -16,12 +34,7 @@ export class ResourceActions extends Component {
                     <img src={help} alt="help" />
                 </div>
                 <div className="card-info flex column">
-                    <p className="card-row">Action 1</p>
-                    <p className="card-row">Action 1</p>
-                    <p className="card-row">Action 1</p>
-                    <p className="card-row">Action 1</p>
-                    <p className="card-row">Action 1</p>
-                    <p className="card-row">Action 1</p>
+                    {actions.length && actions.map(action => <p key={action.id} className="card-row">{action.name}</p>)}
                 </div>
             </section>
         )

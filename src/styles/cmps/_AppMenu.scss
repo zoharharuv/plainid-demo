@@ -1,3 +1,11 @@
 .app-menu {
     width: 380px;
+    h1 {
+        font-size: 1.4rem;
+        font-weight: 400;
+    }
+    .app-menu-top {
+        gap: 20px;
+        padding: 15px ;
+    }
 }

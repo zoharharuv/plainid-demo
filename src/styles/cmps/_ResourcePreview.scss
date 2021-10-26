@@ -1,6 +1,8 @@
 .resource-preview {
+    cursor: pointer;
     padding: 1rem;
-    border-bottom: 1px solid $clr3;
+    border-bottom: 3px solid $clr3;
+    transition: background-color 0.2s;
     &.active {
         box-shadow: 4px 0px 0 #5291eb inset;
         background-color: #e6e6e6;

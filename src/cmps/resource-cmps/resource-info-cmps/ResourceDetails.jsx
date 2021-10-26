@@ -3,6 +3,7 @@ import help from '../../../assets/img/help-12.svg'
 
 export class ResourceDetails extends Component {
     render() {
+        const {name, description, resourceType, path} = this.props.resource
         return (
             <section className="resource-details flex column card" >
                 <div className="card-title flex align-center">
@@ -13,13 +14,13 @@ export class ResourceDetails extends Component {
                 </div>
                 <div className="card-info flex column">
                     <span className="details-info-label">Name</span>
-                    <p className="card-row">x resource</p>
+                    <p className="card-row">{name}</p>
                     <span className="details-info-label">Description</span>
-                    <p className="card-row">11</p>
+                    <p className="card-row">{description}</p>
                     <span className="details-info-label">Resource Type</span>
-                    <p className="card-row">x resource type</p>
+                    <p className="card-row">{resourceType}</p>
                     <span className="details-info-label">Path</span>
-                    <p className="card-row">aa</p>
+                    <p className="card-row">{path}</p>
                 </div>
             </section>
         )

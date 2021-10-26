@@ -9,36 +9,46 @@ import { resourceService } from './services/resource.service';
 export class App extends Component {
   state = {
     resources: [],
-    actions: [],
-    currentResource: null,
+    selectedResource: null,
     filterBy: ''
   }
 
   async componentDidMount() {
     await this.loadActions()
+    if (!this.state.selectedResource) {
+      this.onSelectResource(this.state.resources[0])
+    }
   }
 
   loadActions = async () => {
-    const filter = this.state.filterBy 
+    const filter = this.state.filterBy
     const resources = await resourceService.getResources(filter)
     this.setState({ resources })
   }
 
   onSetFilter = (filterBy) => {
     // DEBOUNCE
-    this.setState({ filterBy })
+    this.setState({ filterBy }, async () => await this.loadActions())
+  }
+
+  onSelectResource = (selectedResource) => {
+    this.setState({ selectedResource })
   }
 
   render() {
-    const { resources, actions, currentResource } = this.state
+    const { resources, selectedResource } = this.state
     return (
       <section className="app flex column">
         <AppHeader />
         <main className="app-content flex">
-          <AppMenu resources={resources} onSetFilter={this.onSetFilter} />
-          {/* {currentResource &&  */}
-          <ResourceInfo resource={currentResource} />
-          {/* } */}
+          <AppMenu
+            resources={resources}
+            selectedResource={selectedResource}
+            onSetFilter={this.onSetFilter}
+            onSelectResource={this.onSelectResource} />
+          {selectedResource &&
+            <ResourceInfo resource={selectedResource} />
+          }
         </main>
       </section>
     )

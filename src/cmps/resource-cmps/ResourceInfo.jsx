@@ -5,22 +5,14 @@ import { ResourceActions } from './resource-info-cmps/ResourceActions';
 
 export class ResourceInfo extends Component {
   render() {
-    const resource = {
-      "id": "1",
-      "name": "Item 1",
-      "description": "This is Item 1 description",
-      "resourceType": "x resource type 1",
-      "path": "servers/security/resources/item_1",
-      "actionIds": ["1", "2", "3", "4", "5"]
-    }
-    const { name, description } = resource;
+    const { resource } = this.props;
     return (
       <section className="resource-info" >
         <div className="resource-container flex column">
-          <ResourceHeader headerInfo={{ name, description }} />
+          <ResourceHeader headerInfo={{ name: resource.name, description: resource.description }} />
           <div className="resource-inner-container flex">
-            <ResourceDetails />
-            <ResourceActions />
+            <ResourceDetails resource={resource} />
+            <ResourceActions actionIds={resource.actionIds} />
           </div>
         </div>
       </section>
