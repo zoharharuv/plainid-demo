@@ -1,0 +1,17 @@
+// BASIC
+@import './typography.scss';
+@import './variables.scss';
+@import './base.scss';
+@import './helpers.scss';
+@import './mixins.scss';
+
+// MAIN
+@import './app.scss';
+
+//CMPS
+@import './cmps/AppHeader';
+@import './cmps/AppMenu';
+@import './cmps/resourceSearch';
+@import './cmps/resourceList';
+@import './cmps/resourcePreview';
+@import './cmps/resourceInfo';
