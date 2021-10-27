@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/plainid-demo/static/css/main.17c4690d.chunk.css",
+    "main.js": "/plainid-demo/static/js/main.0b0bbbd1.chunk.js",
+    "main.js.map": "/plainid-demo/static/js/main.0b0bbbd1.chunk.js.map",
+    "runtime-main.js": "/plainid-demo/static/js/runtime-main.26d5c52e.js",
+    "runtime-main.js.map": "/plainid-demo/static/js/runtime-main.26d5c52e.js.map",
+    "static/js/2.72c8511f.chunk.js": "/plainid-demo/static/js/2.72c8511f.chunk.js",
+    "static/js/2.72c8511f.chunk.js.map": "/plainid-demo/static/js/2.72c8511f.chunk.js.map",
+    "index.html": "/plainid-demo/index.html",
+    "static/css/main.17c4690d.chunk.css.map": "/plainid-demo/static/css/main.17c4690d.chunk.css.map",
+    "static/js/2.72c8511f.chunk.js.LICENSE.txt": "/plainid-demo/static/js/2.72c8511f.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/plainid-demo/static/media/Roboto-Regular.03523cf5.ttf",
+    "static/media/active.2ed6ace1.svg": "/plainid-demo/static/media/active.2ed6ace1.svg",
+    "static/media/arrow-right.a3e03923.svg": "/plainid-demo/static/media/arrow-right.a3e03923.svg",
+    "static/media/help-12.a3d4cef2.svg": "/plainid-demo/static/media/help-12.a3d4cef2.svg",
+    "static/media/plainid-logo-white.4cd730df.png": "/plainid-demo/static/media/plainid-logo-white.4cd730df.png",
+    "static/media/search.d3887993.svg": "/plainid-demo/static/media/search.d3887993.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.26d5c52e.js",
+    "static/js/2.72c8511f.chunk.js",
+    "static/css/main.17c4690d.chunk.css",
+    "static/js/main.0b0bbbd1.chunk.js"
+  ]
+}
