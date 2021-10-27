@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { AppHeader } from './cmps/AppHeader';
 import { AppMenu } from './cmps/AppMenu';
@@ -7,60 +7,66 @@ import { ResourceInfo } from './cmps/resource-cmps/ResourceInfo';
 import { resourceService } from './services/resource.service';
 import { utilService } from './services/utils';
 
-export class App extends Component {
-  state = {
-    resources: [],
-    selectedResource: null,
-    filterBy: '',
-    isMenuShown: false
+import { useUpdateEffect } from './hooks/useUpdateEffect';
+
+export function App() {
+  const [resources, setResources] = useState([]);
+  const [selectedResource, setSelectedResource] = useState(null);
+  const [filterBy, setFilterBy] = useState('');
+  const [isMenuShown, setIsMenuShown] = useState(false);
+
+  const loadResources = async (filterBy = '') => {
+    const res = await resourceService.getResources(filterBy);
+    setResources(res);
+    return res
   }
 
-  async componentDidMount() {
-    await this.loadActions()
-    if (!this.state.selectedResource) {
-      this.onSelectResource(this.state.resources[0])
+  // eslint-disable-next-line
+  const debouncedloadResources = useCallback(utilService.debounce(loadResources, 250), []);
+
+  const handleChange = useCallback((ev) => {
+    const filter = ev.target.value;
+    setFilterBy(filter);
+    // eslint-disable-next-line
+  }, [filterBy])
+
+  const onSelectResource = (resource) => {
+    setSelectedResource(resource);
+  }
+
+  const toggleMenu = useCallback(() => {
+    setIsMenuShown(prev => !prev);
+  }, [setIsMenuShown])
+
+  useEffect(() => {
+    async function fetchResources() {
+      const [selectedRes] = await loadResources();
+      onSelectResource(selectedRes);
     }
-  }
+    fetchResources();
+  }, []);
 
-  loadActions = async () => {
-    const filter = this.state.filterBy
-    const resources = await resourceService.getResources(filter)
-    this.setState({ resources })
-  }
+  useUpdateEffect(() => {
+    debouncedloadResources(filterBy)
+  }, [filterBy])
 
-  loadActionsDebounced = utilService.debounce(async () => await this.loadActions(), 250);
-
-  onSetFilter = (filterBy) => {
-    this.setState({ filterBy }, this.loadActionsDebounced())
-  }
-
-  onSelectResource = (selectedResource) => {
-    this.setState({ selectedResource })
-  }
-
-  toggleMenu = () =>{
-    this.setState({isMenuShown: !this.state.isMenuShown})
-  }
-
-  render() {
-    const { resources, selectedResource, isMenuShown } = this.state
-    return (
-      <section className="app flex column">
-        <AppHeader />
-        <main className="app-content flex grow">
-          <AppMenu
-            isMenuShown={isMenuShown}
-            toggleMenu={this.toggleMenu}
-            resources={resources}
-            selectedResource={selectedResource}
-            onSetFilter={this.onSetFilter}
-            onSelectResource={this.onSelectResource} />
-          {selectedResource &&
-            <ResourceInfo resource={selectedResource} />
-          }
-        </main>
-      </section>
-    )
-  }
+  return (
+    <section className="app flex column">
+      <AppHeader />
+      <main className="app-content flex grow">
+        <AppMenu
+          isMenuShown={isMenuShown}
+          toggleMenu={toggleMenu}
+          resources={resources}
+          selectedResource={selectedResource}
+          filterBy={filterBy}
+          handleChange={handleChange}
+          onSelectResource={onSelectResource} />
+        {selectedResource &&
+          <ResourceInfo resource={selectedResource} />
+        }
+      </main>
+    </section>
+  )
 }
 

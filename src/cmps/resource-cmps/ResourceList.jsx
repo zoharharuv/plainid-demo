@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import { ResourcePreview } from './ResourcePreview';
 
-export function ResourceList({ resources, selectedResource, onSelectResource }) {
+export const ResourceList = memo(function _ResourceList({ resources, selectedResource, onSelectResource }) {
     return (
         <section className="resource-list flex column">
             {resources.length ? resources.map(resource => <ResourcePreview
@@ -11,4 +12,4 @@ export function ResourceList({ resources, selectedResource, onSelectResource }) 
                 : <h1>No resources found!</h1>}
         </section>
     )
-}
+})
