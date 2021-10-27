@@ -11,7 +11,8 @@ export class App extends Component {
   state = {
     resources: [],
     selectedResource: null,
-    filterBy: ''
+    filterBy: '',
+    isMenuShown: false
   }
 
   async componentDidMount() {
@@ -37,13 +38,19 @@ export class App extends Component {
     this.setState({ selectedResource })
   }
 
+  toggleMenu = () =>{
+    this.setState({isMenuShown: !this.state.isMenuShown})
+  }
+
   render() {
-    const { resources, selectedResource } = this.state
+    const { resources, selectedResource, isMenuShown } = this.state
     return (
       <section className="app flex column">
         <AppHeader />
         <main className="app-content flex grow">
           <AppMenu
+            isMenuShown={isMenuShown}
+            toggleMenu={this.toggleMenu}
             resources={resources}
             selectedResource={selectedResource}
             onSetFilter={this.onSetFilter}

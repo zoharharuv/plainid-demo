@@ -5,4 +5,7 @@
         font-size: 1.3rem;
         font-weight: 400;
     }
+    @include for-normal-layout {
+        padding: 10px;
+    }
 }

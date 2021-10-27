@@ -3,10 +3,21 @@
     padding: 1rem;
     border-bottom: 3px solid $clr3;
     transition: background-color 0.2s;
+    img:not(:first-child){
+        opacity: 0;
+    }
+    &:hover {
+       img:not(:first-child){
+            opacity: 1;
+        }
+    }
     &.active {
         box-shadow: 4px 0px 0 #5291eb inset;
         background-color: #e6e6e6;
         font-family: roboto-bold;
+       img:not(:first-child){
+            opacity: 1;
+        }
     }
     .resource-title {
         gap: 5px;

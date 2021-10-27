@@ -1,4 +1,7 @@
 .resource-details {
     flex-basis: 60%;
     border-right: 2px solid $clr3;
+    @include for-normal-layout {
+        flex-basis: unset;
+    }
 }
