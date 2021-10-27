@@ -1,7 +1,7 @@
 import { databaseService } from './database.service';
 
 async function getActions(actionIds) {
-    const { actions } = await databaseService.getDatabase()
+    const { actions } = await databaseService.query()
     return actionIds.map(id => actions.find(action => action.id === id))
 }
 

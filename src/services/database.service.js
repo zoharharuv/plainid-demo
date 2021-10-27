@@ -1,9 +1,9 @@
 const gDatabase = require('../data/data.json');
 
-async function getDatabase(){
+async function query(){
     return gDatabase
 }
 
 export const databaseService = {
-    getDatabase
+    query
 }

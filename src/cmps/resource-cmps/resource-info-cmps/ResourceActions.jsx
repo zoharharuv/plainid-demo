@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import help from '../../../assets/img/help-12.svg'
 import { actionService } from '../../../services/action.service';
+import help from '../../../assets/img/help-12.svg'
 
 export class ResourceActions extends Component {
     state = {

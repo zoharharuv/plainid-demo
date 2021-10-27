@@ -1,7 +1,7 @@
 import { databaseService } from './database.service';
 
 async function getResources(filter = null) {
-    const { resources } = await databaseService.getDatabase()
+    const { resources } = await databaseService.query()
     if (!filter) return resources;
     const regex = new RegExp(filter, 'i');
     return resources.filter(resource => regex.test(resource.name));

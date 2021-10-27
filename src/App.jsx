@@ -5,6 +5,7 @@ import { AppMenu } from './cmps/AppMenu';
 import { ResourceInfo } from './cmps/resource-cmps/ResourceInfo';
 
 import { resourceService } from './services/resource.service';
+import { utilService } from './services/utils';
 
 export class App extends Component {
   state = {
@@ -26,9 +27,10 @@ export class App extends Component {
     this.setState({ resources })
   }
 
+  loadActionsDebounced = utilService.debounce(async () => await this.loadActions(), 250);
+
   onSetFilter = (filterBy) => {
-    // DEBOUNCE
-    this.setState({ filterBy }, async () => await this.loadActions())
+    this.setState({ filterBy }, this.loadActionsDebounced())
   }
 
   onSelectResource = (selectedResource) => {
@@ -40,7 +42,7 @@ export class App extends Component {
     return (
       <section className="app flex column">
         <AppHeader />
-        <main className="app-content flex">
+        <main className="app-content flex grow">
           <AppMenu
             resources={resources}
             selectedResource={selectedResource}

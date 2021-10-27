@@ -1,10 +1,7 @@
-import { Component } from "react";
 import arrow from '../../assets/img/arrow-right.svg'
 import active from '../../assets/img/active.svg'
 
-export class ResourcePreview extends Component {
-    render() {
-        const { resource, selectedResource, onSelectResource } = this.props
+export function ResourcePreview({resource, selectedResource, onSelectResource}) {
         const isActive = resource.id === selectedResource?.id;
         return (
             <section className={`resource-preview flex align-center space-between ${isActive ? 'active' : ''}`}
@@ -18,5 +15,4 @@ export class ResourcePreview extends Component {
                 }
             </section>
         )
-    }
 }

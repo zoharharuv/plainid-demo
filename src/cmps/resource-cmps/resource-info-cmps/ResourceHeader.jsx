@@ -1,13 +1,8 @@
-import { Component } from 'react';
-
-export class ResourceHeader extends Component {
-    render() {
-        const { name, description } = this.props.headerInfo
-        return (
-            <section className="resource-header padding15" >
-                <h1>{name}</h1>
-                <p>{description}</p>
-            </section>
-        )
-    }
+export function ResourceHeader({ headerInfo }) {
+    return (
+        <section className="resource-header padding15" >
+            <h1>{headerInfo.name}</h1>
+            <p>{headerInfo.description}</p>
+        </section>
+    )
 }
