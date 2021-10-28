@@ -10,7 +10,7 @@ export const ResourceInfo = memo(function _ResourceInfo({ resource }) {
         <ResourceHeader headerInfo={{ name: resource.name, description: resource.description }} />
         <div className="resource-inner-container flex">
           <ResourceDetails resource={resource} />
-          <ResourceActions actionIds={resource.actionIds} />
+          <ResourceActions resource={resource} />
         </div>
       </div>
     </section>
