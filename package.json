@@ -2,7 +2,7 @@
   "name": "plainid-demo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://zoharharuv.github.io/plainid",
+  "homepage": "https://zoharharuv.github.io/plainid-demo",
   "dependencies": {
     "gh-pages": "^3.2.3",
     "node-sass": "^6.0.1",
