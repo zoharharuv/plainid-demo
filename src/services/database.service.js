@@ -1,6 +1,6 @@
 const gDatabase = require('../data/data.json');
 
-async function query(){
+async function query() {
     return gDatabase
 }
 

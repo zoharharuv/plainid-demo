@@ -1,8 +1,8 @@
-.resource-actions {
+.actions-menu {
     flex-basis: 40%;
     gap: 34px;
     @include for-normal-layout {
         flex-basis: unset;
-        gap: 10px; 
+        gap: 10px;
     }
 }
